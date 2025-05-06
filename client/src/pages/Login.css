@@ -1,0 +1,31 @@
+.links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.links a {
+  color: #e74c3c;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: inline-block;
+  margin: 0.2rem 0;
+}
+
+.links a:hover {
+  color: #c0392b;
+  text-decoration: underline;
+}
+
+.forgot-password {
+  font-size: 0.95rem;
+  color: #666 !important;
+  margin-top: 0.2rem;
+}
+
+.forgot-password:hover {
+  color: #e74c3c !important;
+} 

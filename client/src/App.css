@@ -1,0 +1,592 @@
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff5f5;
+}
+
+body.dark-theme {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+body.dark-theme nav {
+  background-color: #102027;
+  color: #e0f7fa;
+}
+
+body.dark-theme .nav-brand a,
+body.dark-theme .nav-links a {
+  color: #e0f7fa;
+}
+
+body.dark-theme .nav-links a:hover {
+  background-color: #138496;
+}
+
+body.dark-theme .nav-links button {
+  background-color: #138496;
+  color: #e0f7fa;
+}
+
+body.dark-theme .auth-container,
+body.dark-theme .dashboard-section,
+body.dark-theme .admin-panel,
+body.dark-theme .donor-management-container,
+body.dark-theme .inventory-management-container,
+body.dark-theme .request-approval-container {
+  background-color: #1a2a32;
+  color: #e0f7fa;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.12);
+}
+
+body.dark-theme th, body.dark-theme td {
+  border-bottom: 1px solid #22556a;
+}
+
+body.dark-theme tr:last-child td {
+  border-bottom: none;
+}
+
+body.dark-theme table {
+  background: #16323a;
+}
+
+body.dark-theme input:focus, body.dark-theme select:focus {
+  outline: 2px solid #17a2b8;
+  background: #16323a;
+}
+
+body.dark-theme .form-group label {
+  color: #b2ebf2;
+}
+
+body.dark-theme .nav-links a.active, body.dark-theme .nav-links a:active {
+  background: #17a2b8;
+  color: #fff;
+}
+
+body.dark-theme .admin-panel li:hover, body.dark-theme .request-approval-container li:hover {
+  background: #22556a;
+}
+
+body.dark-theme .dashboard-section, body.dark-theme .inventory-item, body.dark-theme .request-item {
+  background: #16323a;
+  color: #e0f7fa;
+}
+
+body.dark-theme .auth-container {
+  background: #1a2a32;
+  color: #e0f7fa;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.18);
+}
+
+body.dark-theme .error {
+  background: #2d2323;
+  color: #ff8a65;
+  border: 1px solid #ff8a65;
+}
+body.dark-theme .success {
+  background: #1de9b6;
+  color: #102027;
+  border: 1px solid #1de9b6;
+}
+
+body.dark-theme button:disabled {
+  background: #444c4e;
+  color: #b2ebf2;
+}
+
+body.dark-theme .nav-links button[title="Toggle theme"] {
+  color: #1de9b6;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #dc2626;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #b91c1c;
+}
+
+.nav-links button {
+  background-color: white;
+  color: #dc2626;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.nav-links button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Auth Container Styles */
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
+  border: 1px solid #fee2e2;
+  width: 90%;
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: #dc2626;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.auth-container .form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.auth-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.auth-container .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-container .form-group input:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.auth-container button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.auth-container button[type="submit"]:hover {
+  background-color: #b91c1c;
+}
+
+.auth-container button[type="submit"]:disabled {
+  background-color: #fca5a5;
+  cursor: not-allowed;
+}
+
+.auth-container .link-button {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  text-decoration: underline;
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-container .link-button:hover {
+  color: #b91c1c;
+}
+
+.auth-container .error {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  border: 1px solid #fecaca;
+  width: 100%;
+}
+
+.auth-container .success {
+  background-color: #dcfce7;
+  color: #059669;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  border: 1px solid #bbf7d0;
+  width: 100%;
+}
+
+/* Dark theme for auth containers */
+body.dark-theme .auth-container {
+  background-color: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .auth-container h2 {
+  color: #f87171;
+}
+
+body.dark-theme .auth-container .form-group label {
+  color: #e5e7eb;
+}
+
+body.dark-theme .auth-container .form-group input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+body.dark-theme .auth-container .form-group input:focus {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+}
+
+body.dark-theme .auth-container button[type="submit"] {
+  background-color: #f87171;
+}
+
+body.dark-theme .auth-container button[type="submit"]:hover {
+  background-color: #ef4444;
+}
+
+body.dark-theme .auth-container button[type="submit"]:disabled {
+  background-color: #9ca3af;
+}
+
+body.dark-theme .auth-container .link-button {
+  color: #f87171;
+}
+
+body.dark-theme .auth-container .link-button:hover {
+  color: #ef4444;
+}
+
+body.dark-theme .auth-container .error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-color: #991b1b;
+}
+
+body.dark-theme .auth-container .success {
+  background-color: #064e3b;
+  color: #a7f3d0;
+  border-color: #065f46;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  padding: 2rem;
+}
+
+.dashboard h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.dashboard-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-section h2 {
+  color: #dc2626;
+  margin-bottom: 1.5rem;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.inventory-item {
+  background: white;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.inventory-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
+}
+
+.inventory-item h3 {
+  color: #dc2626;
+  margin-bottom: 0.5rem;
+}
+
+.requests-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.request-item {
+  background: white;
+  border-left: 4px solid #dc2626;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+}
+
+.request-item h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.status-pending {
+  color: #f59e0b;
+}
+
+.status-approved {
+  color: #10b981;
+}
+
+.status-rejected {
+  color: #dc2626;
+}
+
+.status-completed {
+  color: #059669;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #4b5563;
+}
+
+/* Admin Panel & Management Pages */
+.admin-panel, .donor-management-container, .inventory-management-container, .request-approval-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin-panel h2, .donor-management-container h2, .inventory-management-container h2, .request-approval-container h2 {
+  color: #dc2626;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.admin-panel section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #fee2e2;
+}
+
+.admin-panel ul, .request-approval-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-panel li, .request-approval-container li {
+  background: white;
+  margin-bottom: 0.75rem;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(44,62,80,0.04);
+  }
+
+/* Table Styles for Management Pages */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background: white;
+}
+
+th {
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #fee2e2;
+}
+
+tr:hover {
+  background-color: #fff5f5;
+}
+
+/* Button Styles */
+button, .admin-panel button, .donor-management-container button, .inventory-management-container button, .request-approval-container button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+button:hover, .admin-panel button:hover, .donor-management-container button:hover, .inventory-management-container button:hover, .request-approval-container button:hover {
+  background-color: #b91c1c;
+}
+
+button:disabled {
+  background-color: #fca5a5;
+  cursor: not-allowed;
+}
+
+/* Responsive Admin Layout */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .dashboard-section, .admin-panel, .donor-management-container,
+  .inventory-management-container, .request-approval-container {
+    padding: 1rem;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* List item hover for admin and request lists */
+.admin-panel li:hover, .request-approval-container li:hover {
+  background: #b2ebf2;
+}
+
+/* Standardize container padding and margin */
+.admin-panel, .donor-management-container, .inventory-management-container, .request-approval-container, .auth-container, .dashboard-section {
+  margin-bottom: 2rem;
+  padding: 2rem 1.5rem;
+}
+
+/* Form alignment */
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input, .form-group select {
+  margin-bottom: 0.5rem;
+}
+
+/* Button spacing */
+button, .admin-panel button, .donor-management-container button, .inventory-management-container button, .request-approval-container button {
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .admin-panel, .donor-management-container, .inventory-management-container, .request-approval-container, .auth-container, .dashboard-section {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Responsive adjustments for auth container */
+@media (max-width: 480px) {
+  .auth-container {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .auth-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-container .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .auth-container .form-group input {
+    padding: 0.6rem;
+  }
+
+  .auth-container button[type="submit"] {
+    padding: 0.6rem;
+  }
+} 
