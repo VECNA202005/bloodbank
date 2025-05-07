@@ -1,45 +1,37 @@
 const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-module.exports = (sequelize) => {
-  const BloodDonation = sequelize.define('BloodDonation', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    donorId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'id'
-      }
-    },
-    bloodGroup: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isIn: [['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']]
-      }
-    },
-    quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        max: 2
-      }
-    },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
-    }
-  }, {
-    timestamps: true,
-    tableName: 'blood_donations',
-    underscored: true
-  });
+const BloodDonation = sequelize.define('BloodDonation', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  bloodGroup: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  units: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  },
+  donationDate: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  },
+  status: {
+    type: DataTypes.ENUM('pending', 'completed', 'cancelled'),
+    defaultValue: 'pending'
+  },
+  notes: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  }
+}, {
+  timestamps: true,
+  tableName: 'blood_donations'
+});
 
-  return BloodDonation;
-}; 
+module.exports = BloodDonation; 
