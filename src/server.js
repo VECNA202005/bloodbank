@@ -17,7 +17,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://bloodbank-ruddy.vercel.app'
+    'https://bloodbank-ruddy.vercel.app',
+    'https://bloodbank-drm4972pu-vecna202005s-projects.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -30,6 +31,7 @@ app.use(morgan('dev'));
 // Debug middleware to log requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
+  console.log('Origin:', req.headers.origin);
   next();
 });
 
