@@ -1,13 +1,19 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'bloodbank',
-  process.env.DB_USER || 'root',
-  process.env.DB_PASSWORD || 'root123',
+  'bloodbankdb_qmk3',
+  'bloodbankdb_qmk3_user',
+  'l54zB9ZQvCU2GUlF2dVcbmQfW0Amtjjl',
   {
-    host: process.env.DB_HOST || 'localhost',
-    dialect: 'mysql',
-    port: process.env.DB_PORT || 3306,
+    host: 'dpg-d0de3dp5pdvs7393196g-a.oregon-postgres.render.com',
+    dialect: 'postgres',
+    port: 5432,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
     logging: false,
     pool: {
       max: 5,
