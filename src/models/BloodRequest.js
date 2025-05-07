@@ -7,30 +7,34 @@ const BloodRequest = sequelize.define('BloodRequest', {
     primaryKey: true,
     autoIncrement: true
   },
+  patientName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   bloodGroup: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  units: {
+  quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 1
+  },
+  hospitalName: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
   status: {
     type: DataTypes.ENUM('pending', 'approved', 'rejected', 'completed'),
     defaultValue: 'pending'
   },
-  reason: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  hospital: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  urgency: {
-    type: DataTypes.ENUM('normal', 'urgent', 'emergency'),
-    defaultValue: 'normal'
+  requestedBy: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'users',
+      key: 'id'
+    }
   }
 }, {
   timestamps: true,
