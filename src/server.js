@@ -22,8 +22,13 @@ app.use(cors({
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  maxAge: 86400 // 24 hours
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -32,6 +37,7 @@ app.use(morgan('dev'));
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   console.log('Origin:', req.headers.origin);
+  console.log('Headers:', req.headers);
   next();
 });
 
