@@ -24,8 +24,25 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes - Note the path structure
-app.use('/api/auth', authRoutes);  // This will handle /api/auth/forgot-password
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Blood Bank Management System API',
+    status: 'Server is running',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      inventory: '/api/inventory',
+      requests: '/api/requests',
+      donor: '/api/donor',
+      admin: '/api/admin',
+      notifications: '/api/notifications'
+    }
+  });
+});
+
+// Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api/donor', donorRoutes);
@@ -66,6 +83,7 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
       console.log('Available routes:');
+      console.log('- GET /');
       console.log('- POST /api/auth/register');
       console.log('- POST /api/auth/login');
       console.log('- POST /api/auth/forgot-password');
