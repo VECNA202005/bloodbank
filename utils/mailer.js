@@ -65,7 +65,7 @@ const sendMail = async (to, templateName, data) => {
         name: 'Blood Bank Management System',
         address: 'your-real-gmail@gmail.com' // <-- Replace with your Gmail address
       },
-      to,
+    to,
       subject: emailContent.subject,
       text: emailContent.text
     };
