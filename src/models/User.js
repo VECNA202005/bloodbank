@@ -25,20 +25,20 @@ const User = sequelize.define('User', {
     allowNull: false
   },
   role: {
-    type: DataTypes.ENUM('admin', 'donor', 'recipient', 'user'),
+    type: DataTypes.ENUM('user', 'admin', 'donor'),
     defaultValue: 'user'
   },
   bloodGroup: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: false
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: false
   },
   address: {
-    type: DataTypes.TEXT,
-    allowNull: true
+    type: DataTypes.STRING,
+    allowNull: false
   },
   resetToken: {
     type: DataTypes.STRING,
@@ -68,14 +68,9 @@ const User = sequelize.define('User', {
   }
 });
 
-// Method to compare password
-User.prototype.comparePassword = async function(candidatePassword) {
-  try {
-    return await bcrypt.compare(candidatePassword, this.password);
-  } catch (error) {
-    console.error('Password comparison error:', error);
-    return false;
-  }
+// Instance method to check password
+User.prototype.checkPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
 };
 
 module.exports = User; 
